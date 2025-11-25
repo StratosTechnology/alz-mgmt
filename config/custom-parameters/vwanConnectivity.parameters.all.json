@@ -45,7 +45,10 @@
           "parHubLocation": "swedencentral",
           "parHubRoutingPreference": "ExpressRoute",
           "parVirtualRouterAutoScaleConfiguration": 2,
-          "parVirtualHubRoutingIntentDestinations": [],
+          "parVirtualHubRoutingIntentDestinations": [ 
+            "Internet",
+            "PrivateTraffic"
+          ],
           "parAzFirewallDnsServers": [],
           "parAzFirewallIntelMode": "Alert",
           "parAzFirewallDnsProxyEnabled": true,
@@ -79,14 +82,17 @@
     "parPrivateDnsZonesEnabled": {
       "value": true
     },
+    "parPrivateDnsZonesResourceGroup": {
+      "value": "rg-alz-private-dns-zones"
+    },
     "parPrivateDnsZones": {
       "value": []
     },
     "parPrivateDnsZonesFallbackToInternet": {
-      "value": false
+      "value": true
     },
     "parVirtualNetworkResourceIdsToLinkTo": {
-      "value": []
+      "value": ["/subscriptions/c4a7234f-1883-4489-bba9-0bb8fcd4241b/resourceGroups/rg-alz-connectivity/providers/Microsoft.Network/virtualNetworks/alz-sidecar-vnet-swedencentral"]
     },
     "additionalPrivateLinkPrivateDnsZonesToInclude": {
       "value": []
