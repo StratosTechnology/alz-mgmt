@@ -33,10 +33,10 @@ param parPolicyAssignmentParameterOverrides = {
   'Deploy-MDFC-Config-H224': {
     parameters: {
       logAnalytics: {
-        value: '/subscriptions/e9bb7927-2d53-418d-9529-f6bec62e71f7/resourcegroups/rg-alz-mgmt-${parLocations[0]}/providers/Microsoft.OperationalInsights/workspaces/law-alz-${parLocations[0]}'
+        value: '/subscriptions/e9bb7927-2d53-418d-9529-f6bec62e71f7/resourcegroups/rg-alz-logging-${parLocations[0]}/providers/Microsoft.OperationalInsights/workspaces/law-alz-${parLocations[0]}'
       }
       emailSecurityContact: {
-        value: 'security@yourcompany.com'
+        value: 'support@stratostech.se'
       }
       ascExportResourceGroupName: {
         value: 'rg-alz-asc-${parLocations[0]}'
@@ -49,7 +49,7 @@ param parPolicyAssignmentParameterOverrides = {
   'Deploy-AzActivity-Log': {
     parameters: {
       logAnalytics: {
-        value: '/subscriptions/e9bb7927-2d53-418d-9529-f6bec62e71f7/resourcegroups/rg-alz-mgmt-${parLocations[0]}/providers/Microsoft.OperationalInsights/workspaces/law-alz-${parLocations[0]}'
+        value: '/subscriptions/e9bb7927-2d53-418d-9529-f6bec62e71f7/resourcegroups/rg-alz-logging-${parLocations[0]}/providers/Microsoft.OperationalInsights/workspaces/law-alz-${parLocations[0]}'
       }
       logsEnabled: {
         value: 'True'
@@ -59,7 +59,7 @@ param parPolicyAssignmentParameterOverrides = {
   'Deploy-Diag-LogsCat': {
     parameters: {
       logAnalytics: {
-        value: '/subscriptions/e9bb7927-2d53-418d-9529-f6bec62e71f7/resourcegroups/rg-alz-mgmt-${parLocations[0]}/providers/Microsoft.OperationalInsights/workspaces/law-alz-${parLocations[0]}'
+        value: '/subscriptions/e9bb7927-2d53-418d-9529-f6bec62e71f7/resourcegroups/rg-alz-logging-${parLocations[0]}/providers/Microsoft.OperationalInsights/workspaces/law-alz-${parLocations[0]}'
       }
     }
   }
@@ -70,7 +70,7 @@ param parPolicyAssignmentParameterOverrides = {
       }
       actionGroupResources: {
         value: {
-          actionGroupEmail: ['triage@yourcompany.com']
+          actionGroupEmail: ['support@stratostech.se']
           eventHubResourceId: []
           functionResourceId: ''
           functionTriggerUrl: ''
@@ -84,7 +84,7 @@ param parPolicyAssignmentParameterOverrides = {
   'Deploy-AzSqlDb-Auditing': {
     parameters: {
       logAnalyticsWorkspaceResourceId: {
-        value: '/subscriptions/e9bb7927-2d53-418d-9529-f6bec62e71f7/resourcegroups/rg-alz-mgmt-${parLocations[0]}/providers/Microsoft.OperationalInsights/workspaces/law-alz-${parLocations[0]}'
+        value: '/subscriptions/e9bb7927-2d53-418d-9529-f6bec62e71f7/resourcegroups/rg-alz-logging-${parLocations[0]}/providers/Microsoft.OperationalInsights/workspaces/law-alz-${parLocations[0]}'
       }
     }
   }
