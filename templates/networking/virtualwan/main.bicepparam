@@ -3,7 +3,6 @@ using './main.bicep'
 // General Parameters
 param parLocations = [
   'swedencentral'
-  'westeurope'
 ]
 param parTags = {}
 param parEnableTelemetry = true
@@ -14,9 +13,9 @@ param parGlobalResourceLock = {
 }
 
 // Resource Group Parameters
-param parVirtualWanResourceGroupNamePrefix = 'rg-alz-conn-'
-param parDnsResourceGroupNamePrefix = 'rg-alz-dns-'
-param parDnsPrivateResolverResourceGroupNamePrefix = 'rg-alz-dnspr-'
+param parVirtualWanResourceGroupNamePrefix = 'rg-alz-conn'
+param parDnsResourceGroupNamePrefix = 'rg-alz-dns'
+param parDnsPrivateResolverResourceGroupNamePrefix = 'rg-alz-dnspr'
 
 // Virtual WAN Parameters
 param vwan = {
@@ -40,11 +39,11 @@ param vwanHubs = [
     allowBranchToBranchTraffic: true
     preferredRoutingGateway: 'ExpressRoute'
     azureFirewallSettings: {
-      deployAzureFirewall: true
+      deployAzureFirewall: false
       name: 'afw-alz-${parLocations[0]}'
     }
     expressRouteGatewaySettings: {
-      deployExpressRouteGateway: true
+      deployExpressRouteGateway: false
       name: 'ergw-alz-${parLocations[0]}'
       minScaleUnits: 1
       maxScaleUnits: 1
@@ -67,17 +66,17 @@ param vwanHubs = [
       }
     }
     ddosProtectionPlanSettings: {
-      deployDdosProtectionPlan: true
+      deployDdosProtectionPlan: false
       name: 'ddos-alz-${parLocations[0]}'
       tags: {}
     }
     dnsSettings: {
       deployPrivateDnsZones: true
-      deployDnsPrivateResolver: true
+      deployDnsPrivateResolver: false
       privateDnsResolverName: 'dnspr-alz-${parLocations[0]}'
     }
     bastionSettings: {
-      deployBastion: true
+      deployBastion: false
       name: 'bas-alz-${parLocations[0]}'
       sku: 'Standard'
     }
@@ -86,60 +85,6 @@ param vwanHubs = [
       sidecarVirtualNetworkEnabled: true
       addressPrefixes: [
         '10.0.4.0/22'
-      ]
-    }
-  }
-  {
-    hubName: 'vhub-alz-${parLocations[1]}'
-    location: parLocations[1]
-    addressPrefix: '10.1.0.0/22'
-    allowBranchToBranchTraffic: true
-    preferredRoutingGateway: 'ExpressRoute'
-    azureFirewallSettings: {
-      deployAzureFirewall: true
-      name: 'afw-alz-${parLocations[1]}'
-    }
-    expressRouteGatewaySettings: {
-      deployExpressRouteGateway: true
-      name: 'ergw-alz-${parLocations[1]}'
-      minScaleUnits: 1
-      maxScaleUnits: 1
-      allowNonVirtualWanTraffic: false
-    }
-    s2sVpnGatewaySettings: {
-      deployS2sVpnGateway: false
-      name: 's2s-alz-${parLocations[1]}'
-      scaleUnit: 1
-    }
-    p2sVpnGatewaySettings: {
-      deployP2sVpnGateway: false
-      name: 'p2s-alz-${parLocations[1]}'
-      scaleUnit: 1
-      vpnServerConfiguration: {
-        vpnAuthenticationTypes: ['AAD']
-      }
-      vpnClientAddressPool: {
-        addressPrefixes: ['172.16.1.0/24']
-      }
-    }
-    ddosProtectionPlanSettings: {
-      deployDdosProtectionPlan: false
-    }
-    dnsSettings: {
-      deployPrivateDnsZones: true
-      deployDnsPrivateResolver: true
-      privateDnsResolverName: 'dnspr-alz-${parLocations[1]}'
-    }
-    bastionSettings: {
-      deployBastion: true
-      name: 'bas-alz-${parLocations[1]}'
-      sku: 'Standard'
-    }
-    sideCarVirtualNetwork: {
-      name: 'vnet-sidecar-alz-${parLocations[1]}'
-      sidecarVirtualNetworkEnabled: true
-      addressPrefixes: [
-        '10.1.4.0/22'
       ]
     }
   }
